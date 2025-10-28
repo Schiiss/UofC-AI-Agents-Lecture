@@ -104,10 +104,10 @@ Before working with the movie data, set up your workspace:
 
    The AI should generate:
 
-   sql
+   ```sql
    SELECT *
    FROM movies.movies_db.ocr
-   
+   ```
 
 ### 📝 Questions to Consider
 
