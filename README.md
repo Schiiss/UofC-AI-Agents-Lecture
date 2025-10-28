@@ -1,8 +1,8 @@
 # UofC-AI-Agents-Lecture
 
-Welcome to the AI Agents Lecture! This document will take you through the steps to successfully complete the workshop.
+Welcome to the AI Agents Lecture! This document will guide you through the steps to successfully complete the workshop.
 
-## Step 1: Login to Databricks
+## Step 1: Log in to Databricks
 
 Navigate to the [sign-in page](https://docs.databricks.com/aws/en/getting-started/free-edition#sign-up-for-databricks-free-edition) for Databricks Free Edition. After signing in, you should see something like this:
 
@@ -26,13 +26,44 @@ Before working with the movie data, you'll need to create a Unity Catalog, a sch
 2. **Create a Schema:**  
    Within your new catalog, click "Create Schema" and name it (e.g., `movies_db`).
 
-  ![Create Schema](assets/create_schema.png)
+   ![Create Schema](assets/create_schema.png)
 
 3. **Create a Volume:**  
-   Inside your schema, click "Create Volume" and name it (e.g., `movie_data`). This is where you'll upload and store your movie PDFs.
+   Inside your schema, click "Create Volume" and name it (e.g., `pdfs`). This is where you'll upload and store your movie PDFs.
 
    ![Create Volume](assets/create_volume.png)
 
+## Step 4: Navigate to IMDb and download 4-5 movies
 
+Navigate to [IMDb](https://www.imdb.com/?ref_=tt_nv_home) and download 4-5 of your favourite movies. You can do this by using the global search bar at the top of the page.
 
-using the ai_extract function to extract director, year_filmed, cast on the table movies.movies_db.ocr on the text column, create a column for each and write the output to movies.movies_db.movie_metadata
+![Search IMDb](assets/search_imdb.png)
+
+Once you have found a movie you like, press Ctrl+P on your keyboard and print the page to PDF:
+
+![Save Movie as PDF](assets/save_movie_as_pdf.png)
+
+## Step 5: Upload the movies to Unity Catalog
+
+Next, we need to get the movies into a place where we can start leveraging AI. You can do this by navigating to the previously created volume and selecting the 'Upload' button:
+
+![Upload to Volume](assets/upload_to_volume.png)
+
+## Step 6: OCR the Movies
+
+Navigate to the scripts/ocr_movies and ensure you have the following configs set:
+
+![Upload to Volume](assets/ocr_script.png)
+
+- destinationTableName: movies.movies_db.ocr
+- limit: 100
+- partitionCount: 4
+- sourceVolumePath: /Volumes/movies/movies_db/pdfs
+
+This script reads files from a specified storage location, processes them based on their file type, and stores the results in a new table. For supported document types (like PDFs and images), it uses AI to extract and parse their contents. For other files, it simply decodes the text. It also tracks any errors during parsing. The final table combines all processed documents, making it easier to analyze and search their contents for business insights.
+
+Once you have set your configurations, select 'Run':
+
+![Run OCR Script](assets/run_ocr_script.png)
+
+This will take a few minutes to run, but at the end, you should get a new table with your movie PDFs' text extracted.
