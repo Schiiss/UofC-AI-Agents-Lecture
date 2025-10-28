@@ -67,3 +67,28 @@ Once you have set your configurations, select 'Run':
 ![Run OCR Script](assets/run_ocr_script.png)
 
 This will take a few minutes to run, but at the end, you should get a new table with your movie PDFs' text extracted.
+
+## Step 7: Explore the OCR table
+
+Navigate to the 'SQL Editor' tab and create a new query:
+
+![Create OCR Table Query](assets/create_ocr_table_sql_query.png)
+
+Use the following prompt and click generate to have AI write the SQL code for you: 'write me a SQL query that returns all rows in movies.movies_db.ocr'
+
+![AI Generated OCR Query](assets/ocr_sql_query_ai_assistant.png)
+
+The AI should generate something similar to the below
+
+```sql
+SELECT *
+FROM movies.movies_db.ocr
+```
+
+
+
+
+
+
+
+
