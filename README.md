@@ -85,6 +85,17 @@ SELECT *
 FROM movies.movies_db.ocr
 ```
 
+### Questions to consider
+
+- What does the data look like?
+- Does the OCR content match the website?
+
+## Step 8: Extract metadata using AI
+
+Similar to last time, create a new query and use the following prompt to have AI write the query for you: 'using the ai_extract function to extract director, year_filmed, cast on the table movies.movies_db.ocr on the text column, create a column for each and write the output to movies.movies_db.movie_metadata'
+
+
+
 
 
 
