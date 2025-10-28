@@ -1,103 +1,127 @@
-# UofC-AI-Agents-Lecture
+# 🎬 UofC-AI-Agents-Lecture
 
-Welcome to the AI Agents Lecture! This document will guide you through the steps to successfully complete the workshop.
+Welcome to the **AI Agents Lecture**! This guide will walk you through each step to successfully complete the workshop.
 
-## Step 1: Log in to Databricks
+---
 
-Navigate to the [sign-in page](https://docs.databricks.com/aws/en/getting-started/free-edition#sign-up-for-databricks-free-edition) for Databricks Free Edition. After signing in, you should see something like this:
+## 🚀 Step 1: Log in to Databricks
 
-![Databricks Homepage](assets/databricks_free_edition_home_page.png)
+1. Go to the [Databricks Free Edition sign-in page](https://docs.databricks.com/aws/en/getting-started/free-edition#sign-up-for-databricks-free-edition).
+2. After signing in, you should see a homepage similar to the one below:
 
-## Step 2: Create a Git Folder
+   ![Databricks Homepage](assets/databricks_free_edition_home_page.png)
 
-The next thing we need to do is download the content for the workshop. You can do this by creating a 'Git folder' in Databricks.
+---
 
-![Create Git Folder](assets/create_git_folder.png)
+## 📁 Step 2: Create a Git Folder
 
-## Step 3: Set Up Catalog, Schema, and Volume
+- Download the workshop content by creating a **Git folder** in Databricks.
 
-Before working with the movie data, you'll need to create a Unity Catalog, a schema within that catalog, and a volume to store your files.
+  ![Create Git Folder](assets/create_git_folder.png)
 
-1. **Create a Catalog:**  
-   In Databricks, navigate to the 'Catalog' tab, click "Create Catalog", and name it (e.g., `movies`).
+---
 
-   ![Create Catalog](assets/create_catalog.png)
+## 🗂️ Step 3: Set Up Catalog, Schema, and Volume
 
-2. **Create a Schema:**  
-   Within your new catalog, click "Create Schema" and name it (e.g., `movies_db`).
+Before working with the movie data, set up your workspace:
 
-   ![Create Schema](assets/create_schema.png)
+1. **Create a Catalog**  
+   - Navigate to the **Catalog** tab.
+   - Click **Create Catalog** and name it (e.g., `movies`).
 
-3. **Create a Volume:**  
-   Inside your schema, click "Create Volume" and name it (e.g., `pdfs`). This is where you'll upload and store your movie PDFs.
+     ![Create Catalog](assets/create_catalog.png)
 
-   ![Create Volume](assets/create_volume.png)
+2. **Create a Schema**  
+   - Within your new catalog, click **Create Schema** and name it (e.g., `movies_db`).
 
-## Step 4: Navigate to IMDb and download 4-5 movies
+     ![Create Schema](assets/create_schema.png)
 
-Navigate to [IMDb](https://www.imdb.com/?ref_=tt_nv_home) and download 4-5 of your favourite movies. You can do this by using the global search bar at the top of the page.
+3. **Create a Volume**  
+   - Inside your schema, click **Create Volume** and name it (e.g., `pdfs`).
+   - This is where you'll upload and store your movie PDFs.
 
-![Search IMDb](assets/search_imdb.png)
+     ![Create Volume](assets/create_volume.png)
 
-Once you have found a movie you like, press Ctrl+P on your keyboard and print the page to PDF:
+---
 
-![Save Movie as PDF](assets/save_movie_as_pdf.png)
+## 🎥 Step 4: Download Movie PDFs from IMDb
 
-## Step 5: Upload the movies to Unity Catalog
+1. Visit [IMDb](https://www.imdb.com/?ref_=tt_nv_home).
+2. Use the search bar to find 4-5 of your favorite movies.
 
-Next, we need to get the movies into a place where we can start leveraging AI. You can do this by navigating to the previously created volume and selecting the 'Upload' button:
+   ![Search IMDb](assets/search_imdb.png)
 
-![Upload to Volume](assets/upload_to_volume.png)
+3. For each movie:
+   - Press `Ctrl+P` to print the page.
+   - Save it as a **PDF**.
 
-## Step 6: OCR the Movies
+     ![Save Movie as PDF](assets/save_movie_as_pdf.png)
 
-Navigate to the scripts/ocr_movies and ensure you have the following configs set:
+---
 
-![Upload to Volume](assets/ocr_script.png)
+## ⬆️ Step 5: Upload the Movies to Unity Catalog
 
-- destinationTableName: movies.movies_db.ocr
-- limit: 100
-- partitionCount: 4
-- sourceVolumePath: /Volumes/movies/movies_db/pdfs
+- Go to your previously created volume.
+- Click the **Upload** button and add your movie PDFs.
 
-This script reads files from a specified storage location, processes them based on their file type, and stores the results in a new table. For supported document types (like PDFs and images), it uses AI to extract and parse their contents. For other files, it simply decodes the text. It also tracks any errors during parsing. The final table combines all processed documents, making it easier to analyze and search their contents for business insights.
+  ![Upload to Volume](assets/upload_to_volume.png)
 
-Once you have set your configurations, select 'Run':
+---
 
-![Run OCR Script](assets/run_ocr_script.png)
+## 🤖 Step 6: OCR the Movies
 
-This will take a few minutes to run, but at the end, you should get a new table with your movie PDFs' text extracted.
+1. Navigate to `scripts/ocr_movies`.
+2. Set the following configs:
 
-## Step 7: Explore the OCR table
+   ![Upload to Volume](assets/ocr_script.png)
 
-Navigate to the 'SQL Editor' tab and create a new query:
+   - `destinationTableName`: `movies.movies_db.ocr`
+   - `limit`: `100`
+   - `partitionCount`: `4`
+   - `sourceVolumePath`: `/Volumes/movies/movies_db/pdfs`
 
-![Create OCR Table Query](assets/create_ocr_table_sql_query.png)
+> **Note:**  
+> This script reads files from storage, processes them (using AI for PDFs/images), and stores results in a new table. Errors are tracked, and all processed documents are combined for easy analysis.
 
-Use the following prompt and click generate to have AI write the SQL code for you: 'write me a SQL query that returns all rows in movies.movies_db.ocr'
+3. Click **Run**:
 
-![AI Generated OCR Query](assets/ocr_sql_query_ai_assistant.png)
+   ![Run OCR Script](assets/run_ocr_script.png)
 
-The AI should generate something similar to the below
+> ⏳ *Processing may take a few minutes. When finished, you'll have a table with extracted text from your movie PDFs.*
 
-```sql
-SELECT *
-FROM movies.movies_db.ocr
-```
+---
 
-### Questions to consider
+## 🔍 Step 7: Explore the OCR Table
+
+1. Go to the **SQL Editor** tab and create a new query:
+
+   ![Create OCR Table Query](assets/create_ocr_table_sql_query.png)
+
+2. Use this prompt for AI:  
+   > *"write me a SQL query that returns all rows in movies.movies_db.ocr"*
+
+   ![AI Generated OCR Query](assets/ocr_sql_query_ai_assistant.png)
+
+   The AI should generate:
+
+   sql
+   SELECT *
+   FROM movies.movies_db.ocr
+   
+
+### 📝 Questions to Consider
 
 - What does the data look like?
 - Does the OCR content match the website?
 
-## Step 8: Extract metadata using AI
+---
 
-Similar to last time, create a new query and use the following prompt to have AI write the query for you: 'using the ai_extract function to extract director, year_filmed, cast on the table movies.movies_db.ocr on the text column, create a column for each and write the output to movies.movies_db.movie_metadata'
+## 🧠 Step 8: Extract Metadata Using AI
 
+- Create a new query and use this prompt for AI:  
+  > *"using the ai_extract function to extract director, year_filmed, cast on the table movies.movies_db.ocr on the text column, create a column for each and write the output to movies.movies_db.movie_metadata"*
 
-
-
-
+---
 
 
 
