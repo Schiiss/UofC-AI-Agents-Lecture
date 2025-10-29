@@ -116,12 +116,34 @@ Before working with the movie data, set up your workspace:
 
 ---
 
-## 🧠 Step 8: Extract Metadata Using AI
+## 🧠 Step 8: Extract Movie Metadata Using AI
 
 - Create a new query and use this prompt for AI:  
   > *"using the ai_extract function to extract director, year_filmed, cast on the table movies.movies_db.ocr on the text column, create a column for each and write the output to movies.movies_db.movie_metadata"*
 
+  ![AI Generated ai_extract query](assets/ai_extract_ai_assistant_prompt.png)
+
+AI should write a query similar to this:
+
+```sql
+CREATE OR REPLACE TABLE movies.movies_db.movie_metadata AS
+SELECT
+  path,
+  text,
+  ai_extract(
+    text,
+    ARRAY('director', 'year_filmed', 'cast')
+  ) AS extracted_entities,
+  extracted_entities['director'] AS director,
+  extracted_entities['year_filmed'] AS year_filmed,
+  extracted_entities['cast'] AS cast
+FROM movies.movies_db.ocr;
+```
 ---
+
+## 🗺️ Step 9: Explore the Metadata Table
+
+
 
 
 
