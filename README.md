@@ -47,7 +47,7 @@ Before working with the movie data, set up your workspace:
 ## 🎥 Step 4: Download Movie PDFs from IMDb
 
 1. Visit [IMDb](https://www.imdb.com/?ref_=tt_nv_home).
-2. Use the search bar to find 4-5 of your favorite movies.
+2. Use the search bar to find 4–5 of your favorite movies.
 
    ![Search IMDb](assets/search_imdb.png)
 
@@ -68,7 +68,7 @@ Before working with the movie data, set up your workspace:
 
 Congratulations, you have now landed data into the Bronze layer!
 
-#TODO Attach image
+<!-- TODO: Attach image -->
 
 ---
 
@@ -95,7 +95,7 @@ Congratulations, you have now landed data into the Bronze layer!
 
 Congratulations, you have now landed data into the Silver layer!
 
-#TODO Attach image
+<!-- TODO: Attach image -->
 
 ---
 
@@ -106,59 +106,62 @@ Congratulations, you have now landed data into the Silver layer!
    ![Create OCR Table Query](assets/create_ocr_table_sql_query.png)
 
 2. Use this prompt for AI:  
-   > *"write me a SQL query that returns all rows in movies.movies_db.ocr"*
+   > *"Write me a SQL query that returns all rows in `movies.movies_db.ocr`."*
 
    ![AI Generated OCR Query](assets/ocr_sql_query_ai_assistant.png)
 
    The AI should generate:
 
    ```sql
+   sql
    SELECT *
    FROM movies.movies_db.ocr
    ```
 
 You have just completed your first learning objective!
 
-✅ Learning Objective: Leverage AI Assistants to Code.
+✅ **Learning Objective:** Leverage AI Assistants to Code.
 
 ### 📝 Questions to Consider
 
 - What does the data look like?
 - Does the OCR content match the website?
 
+---
+
 ### Side Exploration
 
-As described during the presentation, data is the fuel for AI! We have made amazing progress getting the data into Silver, but results may be limited if we put an chatbot/agent ontop of this data.
+As described during the presentation, data is the fuel for AI! We have made amazing progress getting the data into Silver, but results may be limited if we put a chatbot/agent on top of this data.
 
-Lets test this theory and create a Genie Space. A Genie Space will take a natural language query, and convert it to SQL.
+Let's test this theory and create a Genie Space. A Genie Space will take a natural language query and convert it to SQL.
 
-To create a Genie Space, navigate to Genie on the left hand side and create a new space:
+To create a Genie Space, navigate to Genie on the left-hand side and create a new space:
 
 ![Create Genie Space](assets/create_genie_space.png)
 
-After clicking the 'Create' icon, we need to import our ocr table:
+After clicking the 'Create' icon, import your OCR table:
 
 ![Import OCR Table into Genie](assets/import_ocr_table_genie.png)
 
-Next we pass through a question to Genie, make sure to substitue your_movie with one of the movies you downloaded from IMDb:
+Next, ask Genie a question. Make sure to substitute `your_movie` with one of the movies you downloaded from IMDb:
 
 ![Genie OCR Question](assets/genie_ocr_question.png)
 
-In my case, I have brought in the movie "Jaws", so I will ask my question accordingly. You will notice the agent is unable to anwser the question:
+In my case, I have brought in the movie "Jaws", so I will ask my question accordingly. You will notice the agent is unable to answer the question:
 
 ![Genie OCR Jaws Question](assets/jaws_ocr_question_results.png)
 
 #### 📝 Questions to Consider
 
 - What did you learn from this side exploration?
-- Is the data ready for AI to use it?
+- Is the data ready for AI to use?
 
 ---
 
 ## 🧠 Step 8: Extract Movie Metadata Using AI
 
 - Create a new query and use this prompt for AI:  
-  > *"using the ai_extract function to extract director, year_filmed, cast on the table movies.movies_db.ocr on the text column, create a column for each and write the output to movies.movies_db.movie_metadata"*
+  > *"Using the `ai_extract` function to extract director, year_filmed, and cast on the table `movies.movies_db.ocr` on the text column, create a column for each and write the output to `movies.movies_db.movie_metadata`."*
 
   ![AI Generated ai_extract query](assets/ai_extract_ai_assistant_prompt.png)
 
@@ -178,29 +181,30 @@ SELECT
   extracted_entities['cast'] AS cast
 FROM movies.movies_db.ocr;
 ```
+
 Congratulations, you have now landed data into the Gold layer!
 
 You have also completed another learning objective!
 
-✅ Learning Objective: How to leverage AI to enrich data.
+✅ **Learning Objective:** How to leverage AI to enrich data.
 
 ### 📝 Questions to Consider
 
-- Is the data ready for AI to use it?
-- Is there additonal metadata we should extract?
+- Is the data ready for AI to use?
+- Is there additional metadata we should extract?
 
 ---
 
 ## 🗺️ Step 9: Explore the Metadata Table
 
-Before we put an agent on top of our gold data, lets make sure we understand the contents of the table.
+Before we put an agent on top of our gold data, let's make sure we understand the contents of the table.
 
 - Create a new query and use this prompt for AI: 
-   > *"create a query to select all rows from movies.movies_db.movie_metadata"*
+   > *"Create a query to select all rows from `movies.movies_db.movie_metadata`."*
 
 ![AI Generated Metadata Table Query](assets/ai_query_metadata_table.png)
 
-The query returned from the AI should look something like this
+The query returned from the AI should look something like this:
 
 ```sql
 SELECT * FROM movies.movies_db.movie_metadata;
@@ -208,47 +212,47 @@ SELECT * FROM movies.movies_db.movie_metadata;
 
 ### 📝 Questions to Consider
 
-- Did the AI extract the metadata properties correctly (ex: is the director correct?)?
+- Did the AI extract the metadata properties correctly (e.g., is the director correct)?
 - Do you think the agent will be better able to interact with this data? 
 
-## Step 10: Create a Genie Space on the Gold Data
+---
+
+## 🦸 Step 10: Create a Genie Space on the Gold Data
 
 After all that hard work, now we can finally create our agent!
 
-We will create a new Genie Space and bring in our new metadata table
+We will create a new Genie Space and bring in our new metadata table.
 
 ![Create New Genie Room For Metadata Table](assets/create_metadata_genie.png)
 
-Also make sure you rename the Genie Space to something meaninigful:
+Also, make sure you rename the Genie Space to something meaningful:
 
 ![Rename Genie Room](assets/rename_genie_room.png)
 
-Next, lets take that same question we asked during our 'side exploration' in step 7.
+Next, let's take that same question we asked during our 'side exploration' in step 7.
 
 ![Genie Metadata Question](assets/genie_metadata_question.png)
 
-If all goes well, the agent should be able to anwser the question!
+If all goes well, the agent should be able to answer the question!
 
 You have just completed two learning objectives!
 
-✅ Learning Objective: Understand the importance of good quality data.
-✅ Learning Objective: Build & interact with AI Agents.
+✅ **Learning Objective:** Understand the importance of good quality data.  
+✅ **Learning Objective:** Build & interact with AI Agents.
 
-## Step 11: Bring in a new Dataset
+---
+
+## 🆕 Step 11: Bring in a New Dataset
 
 Awesome work making it this far!
 
-This step can be completed either during our session today, or later on your own time.
+This step can be completed either during our session today or later on your own time.
 
-The idea here is to repeat all of the above steps on a different dataset. Perhaps you could pull sports data (MLB, NHL etc.) and get the data all the way to gold.
+The idea here is to repeat all of the above steps on a different dataset. Perhaps you could pull sports data (MLB, NHL, etc.) and get the data all the way to gold.
 
 Once in gold, augment your existing Genie Space from step 10 and add that table into it for use.
 
 ### 📝 Questions to Consider
 
-- How does the Genie agent decide which table to query based on the users question?
+- How does the Genie agent decide which table to query based on the user's question?
 - Does the agent do a good job of deciding which dataset to query?
-
-
-
-
