@@ -160,6 +160,10 @@ In my case, I have brought in the movie "Jaws", so I will ask my question accord
 
 ## 🧠 Step 8: Extract Movie Metadata Using AI
 
+Now we are going to use an AI function to extract specific metadata from the OCR content. You can specify a set of metadata like director, year filmed, and the cast. 
+
+The AI will analyze the OCR content and extract the relevant metadata.
+
 - Create a new query and use this prompt for AI:  
   > *"Using the `ai_extract` function to extract director, year_filmed, and cast on the table `movies.movies_db.ocr` on the text column, create a column for each and write the output to `movies.movies_db.movie_metadata`."*
 
