@@ -66,6 +66,10 @@ Before working with the movie data, set up your workspace:
 
   ![Upload to Volume](assets/upload_to_volume.png)
 
+Congratulations, you have now landed data into the Bronze layer!
+
+#TODO Attach image
+
 ---
 
 ## 🤖 Step 6: OCR the Movies
@@ -88,6 +92,10 @@ Before working with the movie data, set up your workspace:
    ![Run OCR Script](assets/run_ocr_script.png)
 
 > ⏳ *Processing may take a few minutes. When finished, you'll have a table with extracted text from your movie PDFs.*
+
+Congratulations, you have now landed data into the Silver layer!
+
+#TODO Attach image
 
 ---
 
@@ -114,6 +122,33 @@ Before working with the movie data, set up your workspace:
 - What does the data look like?
 - Does the OCR content match the website?
 
+### Side Exploration
+
+As described during the presentation, data is the fuel for AI! We have made amazing progress getting the data into Silver, but results may be limited if we put an chatbot/agent ontop of this data.
+
+Lets test this theory and create a Genie Space. A Genie Space will take a natural language query, and convert it to SQL.
+
+To create a Genie Space, navigate to Genie on the left hand side and create a new space:
+
+![Create Genie Space](assets/create_genie_space.png)
+
+After clicking the 'Create' icon, we need to import our ocr table:
+
+![Import OCR Table into Genie](assets/import_ocr_table_genie.png)
+
+Next we pass through a question to Genie, make sure to substitue your_movie with one of the movies you downloaded from IMDb:
+
+![Genie OCR Question](assets/genie_ocr_question.png)
+
+In my case, I have brought in the movie "Jaws", so I will ask my question accordingly. You will notice the agent is unable to anwser the question:
+
+![Genie OCR Jaws Question](assets/jaws_ocr_question_results.png)
+
+#### 📝 Questions to Consider
+
+- What did you learn from this side exploration?
+- Is the data ready for AI to use it?
+
 ---
 
 ## 🧠 Step 8: Extract Movie Metadata Using AI
@@ -139,11 +174,19 @@ SELECT
   extracted_entities['cast'] AS cast
 FROM movies.movies_db.ocr;
 ```
+Congratulations, you have now landed data into the Gold layer!
+
+### 📝 Questions to Consider
+
+- Is the data ready for AI to use it?
+- Is there additonal metadata we should extract?
+
 ---
 
 ## 🗺️ Step 9: Explore the Metadata Table
 
-
+- Create a new query and use this prompt for AI: 
+   > *"create a query to select all rows from movies.movies_db.movie_metadata"*
 
 
 
