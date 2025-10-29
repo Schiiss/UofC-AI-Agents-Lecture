@@ -74,7 +74,7 @@ Congratulations, you have now landed data into the Bronze layer!
 
 ## 🤖 Step 6: OCR the Movies
 
-1. Navigate to `scripts/ocr_movies`.
+1. Navigate to `scripts/ocr_movies` in the Git folder created back in step 2.
 2. Set the following configs:
 
    ![Upload to Volume](assets/ocr_script.png)
