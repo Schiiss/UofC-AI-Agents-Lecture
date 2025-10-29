@@ -185,14 +185,59 @@ Congratulations, you have now landed data into the Gold layer!
 
 ## 🗺️ Step 9: Explore the Metadata Table
 
+Before we put an agent on top of our gold data, lets make sure we understand the contents of the table.
+
 - Create a new query and use this prompt for AI: 
    > *"create a query to select all rows from movies.movies_db.movie_metadata"*
 
+![AI Generated Metadata Table Query](assets/ai_query_metadata_table.png)
+
+The query returned from the AI should look something like this
+
+```sql
+SELECT * FROM movies.movies_db.movie_metadata;
+```
+
+### 📝 Questions to Consider
+
+- Did the AI extract the metadata properties correctly (ex: is the director correct?)?
+- Do you think the agent will be better able to interact with this data? 
 
 ## Step 10: Create a Genie Space on the Gold Data
 
+After all that hard work, now we can finally create our agent!
 
+We will create a new Genie Space and bring in our new metadata table
+
+![Create New Genie Room For Metadata Table](assets/create_metadata_genie.png)
+
+Also make sure you rename the Genie Space to something meaninigful:
+
+![Rename Genie Room](assets/rename_genie_room.png)
+
+Next, lets take that same question we asked during our 'side exploration' in step 7.
+
+![Genie Metadata Question](assets/genie_metadata_question.png)
+
+If all goes well, the agent should be able to anwser the question!
+
+✅ Lesson Learnt: Good data is critical for AI to work well.
 
 ## Step 11: Bring in a new Dataset
+
+Awesome work making it this far!
+
+This step can be completed either during our session today, or later on your own time.
+
+The idea here is to repeat all of the above steps on a different dataset. Perhaps you could pull sports data (MLB, NHL etc.) and get the data all the way to gold.
+
+Once in gold, augment your existing Genie Space from step 10 and add that table into it for use.
+
+### 📝 Questions to Consider
+
+- How does the Genie agent decide which table to query based on the users question?
+- Does the agent do a good job of deciding which dataset to query?
+
+
 
 
