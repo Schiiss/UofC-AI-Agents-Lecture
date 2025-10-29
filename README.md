@@ -189,6 +189,10 @@ Congratulations, you have now landed data into the Gold layer!
    > *"create a query to select all rows from movies.movies_db.movie_metadata"*
 
 
+## Step 10: Create a Genie Space on the Gold Data
 
+
+
+## Step 11: Bring in a new Dataset
 
 
