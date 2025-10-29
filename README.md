@@ -117,6 +117,10 @@ Congratulations, you have now landed data into the Silver layer!
    FROM movies.movies_db.ocr
    ```
 
+You have just completed your first learning objective!
+
+✅ Learning Objective: Leverage AI Assistants to Code.
+
 ### 📝 Questions to Consider
 
 - What does the data look like?
@@ -176,6 +180,10 @@ FROM movies.movies_db.ocr;
 ```
 Congratulations, you have now landed data into the Gold layer!
 
+You have also completed another learning objective!
+
+✅ Learning Objective: How to leverage AI to enrich data.
+
 ### 📝 Questions to Consider
 
 - Is the data ready for AI to use it?
@@ -221,7 +229,10 @@ Next, lets take that same question we asked during our 'side exploration' in ste
 
 If all goes well, the agent should be able to anwser the question!
 
-✅ Lesson Learnt: Good data is critical for AI to work well.
+You have just completed two learning objectives!
+
+✅ Learning Objective: Understand the importance of good quality data.
+✅ Learning Objective: Build & interact with AI Agents.
 
 ## Step 11: Bring in a new Dataset
 
