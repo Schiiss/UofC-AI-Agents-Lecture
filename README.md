@@ -260,3 +260,20 @@ Once in gold, augment your existing Genie Space from step 10 and add that table 
 
 - How does the Genie agent decide which table to query based on the user's question?
 - Does the agent do a good job of deciding which dataset to query?
+
+## 🏁 Summary & Next Steps
+
+Congratulations on completing the AI Agents workshop!
+
+- You learned how to ingest, process, and enrich data using Databricks and AI functions.
+- You explored how data quality impacts AI agent performance.
+- You built and interacted with Genie Spaces to answer natural language questions.
+
+**Next Steps:**
+
+- Experiment with different datasets and metadata extraction.
+- Explore advanced Genie Space features in the [Genie documentation](https://docs.databricks.com/en/genie/index.html).
+- Share your Genie Spaces and insights with your peers.
+
+
+
