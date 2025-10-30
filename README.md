@@ -66,9 +66,9 @@ Before working with the movie data, set up your workspace:
 
   ![Upload to Volume](assets/upload_to_volume.png)
 
-Congratulations, you have now landed data into the Bronze layer!
+Congratulations, you have now landed data in the Bronze layer!
 
-<!-- TODO: Attach image -->
+![Data Into Bronze](assets/data_into_bronze.png)
 
 ---
 
@@ -93,9 +93,9 @@ Congratulations, you have now landed data into the Bronze layer!
 
 > ⏳ *Processing may take a few minutes. When finished, you'll have a table with extracted text from your movie PDFs.*
 
-Congratulations, you have now landed data into the Silver layer!
+Congratulations, you have now landed data in the Silver layer!
 
-<!-- TODO: Attach image -->
+![Data Into Silver](assets/data_into_silver.png)
 
 ---
 
@@ -113,7 +113,6 @@ Congratulations, you have now landed data into the Silver layer!
    The AI should generate:
 
    ```sql
-   sql
    SELECT *
    FROM movies.movies_db.ocr
    ```
@@ -186,7 +185,9 @@ SELECT
 FROM movies.movies_db.ocr;
 ```
 
-Congratulations, you have now landed data into the Gold layer!
+Congratulations, you have now landed data in the Gold layer!
+
+![Data Into Gold](assets/data_into_gold.png)
 
 You have also completed another learning objective!
 
@@ -224,6 +225,8 @@ SELECT * FROM movies.movies_db.movie_metadata;
 ## 🦸 Step 10: Create a Genie Space on the Gold Data
 
 After all that hard work, now we can finally create our agent!
+
+![Agent Using Gold Data](assets/agent_using_gold_data.png)
 
 We will create a new Genie Space and bring in our new metadata table.
 
@@ -271,9 +274,7 @@ Congratulations on completing the AI Agents workshop!
 
 **Next Steps:**
 
-- Experiment with different datasets and metadata extraction.
 - Explore advanced Genie Space features in the [Genie documentation](https://docs.databricks.com/en/genie/index.html).
-- Share your Genie Spaces and insights with your peers.
-
-
-
+- Understand the difference between an [LLM versus an Agent](https://docs.databricks.com/aws/en/generative-ai/guide/introduction-generative-ai-apps/#what-are-gen-ai-apps) and when to use which one.
+- Read the [MIT study](https://www.forbes.com/sites/jasonsnyder/2025/08/26/mit-finds-95-of-genai-pilots-fail-because-companies-avoid-friction/) on why AI projects fail.
+- [Key challenges](https://docs.databricks.com/aws/en/generative-ai/guide/gen-ai-challenges) building GenAI Apps.
