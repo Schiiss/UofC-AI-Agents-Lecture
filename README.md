@@ -227,11 +227,11 @@ After all that hard work, now we can finally create our agent!
 
 We will create a new Genie Space and bring in our new metadata table.
 
-![Create New Genie Room For Metadata Table](assets/create_metadata_genie.png)
+![Create New Genie Space For Metadata Table](assets/create_metadata_genie.png)
 
 Also, make sure you rename the Genie Space to something meaningful:
 
-![Rename Genie Room](assets/rename_genie_room.png)
+![Rename Genie Space](assets/rename_genie_room.png)
 
 Next, let's take that same question we asked during our 'side exploration' in step 7.
 
