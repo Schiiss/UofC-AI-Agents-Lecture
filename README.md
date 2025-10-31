@@ -19,6 +19,10 @@ Welcome to the **AI Agents Lecture**! This guide will walk you through each step
 
   ![Create Git Folder](assets/create_git_folder.png)
 
+Leverage this URL to download the workshop artifacts: https://github.com/Schiiss/UofC-AI-Agents-Lecture
+
+![Workshop Artifacts URL](assets/git_folder_url.png)
+
 ---
 
 ## 🗂️ Step 3: Set Up Catalog, Schema, and Volume
